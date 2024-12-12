@@ -11,6 +11,52 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
+// sample_alpha_ordinal_independent_lower
+arma::vec sample_alpha_ordinal_independent_lower(arma::vec alpha_post_mean_m, arma::mat alpha_post_cov_s, int num_iter);
+RcppExport SEXP _ordpum_sample_alpha_ordinal_independent_lower(SEXP alpha_post_mean_mSEXP, SEXP alpha_post_cov_sSEXP, SEXP num_iterSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec >::type alpha_post_mean_m(alpha_post_mean_mSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type alpha_post_cov_s(alpha_post_cov_sSEXP);
+    Rcpp::traits::input_parameter< int >::type num_iter(num_iterSEXP);
+    rcpp_result_gen = Rcpp::wrap(sample_alpha_ordinal_independent_lower(alpha_post_mean_m, alpha_post_cov_s, num_iter));
+    return rcpp_result_gen;
+END_RCPP
+}
+// calc_choice_k_prob
+double calc_choice_k_prob(arma::vec mean_1, arma::vec mean_2, int choice_k);
+RcppExport SEXP _ordpum_calc_choice_k_prob(SEXP mean_1SEXP, SEXP mean_2SEXP, SEXP choice_kSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec >::type mean_1(mean_1SEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type mean_2(mean_2SEXP);
+    Rcpp::traits::input_parameter< int >::type choice_k(choice_kSEXP);
+    rcpp_result_gen = Rcpp::wrap(calc_choice_k_prob(mean_1, mean_2, choice_k));
+    return rcpp_result_gen;
+END_RCPP
+}
+// calc_log_ll_y_star
+double calc_log_ll_y_star(arma::uvec vote_v, arma::mat y_star_m, arma::mat alpha_v_lower, arma::mat alpha_v_upper, arma::vec beta_v, arma::mat delta_v_lower, arma::mat delta_v_upper, arma::uvec respondent_v, arma::uvec question_v, arma::uvec question_num_choices_m1_v);
+RcppExport SEXP _ordpum_calc_log_ll_y_star(SEXP vote_vSEXP, SEXP y_star_mSEXP, SEXP alpha_v_lowerSEXP, SEXP alpha_v_upperSEXP, SEXP beta_vSEXP, SEXP delta_v_lowerSEXP, SEXP delta_v_upperSEXP, SEXP respondent_vSEXP, SEXP question_vSEXP, SEXP question_num_choices_m1_vSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::uvec >::type vote_v(vote_vSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type y_star_m(y_star_mSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type alpha_v_lower(alpha_v_lowerSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type alpha_v_upper(alpha_v_upperSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type beta_v(beta_vSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type delta_v_lower(delta_v_lowerSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type delta_v_upper(delta_v_upperSEXP);
+    Rcpp::traits::input_parameter< arma::uvec >::type respondent_v(respondent_vSEXP);
+    Rcpp::traits::input_parameter< arma::uvec >::type question_v(question_vSEXP);
+    Rcpp::traits::input_parameter< arma::uvec >::type question_num_choices_m1_v(question_num_choices_m1_vSEXP);
+    rcpp_result_gen = Rcpp::wrap(calc_log_ll_y_star(vote_v, y_star_m, alpha_v_lower, alpha_v_upper, beta_v, delta_v_lower, delta_v_upper, respondent_v, question_v, question_num_choices_m1_v));
+    return rcpp_result_gen;
+END_RCPP
+}
 // sample_ordinal_utility_probit
 List sample_ordinal_utility_probit(arma::uvec vote_v, arma::uvec respondent_v, arma::uvec question_v, arma::mat all_param_draws, arma::mat y_star_m, int leg_start_ind, int alpha_v_lower_start_ind, int alpha_v_upper_start_ind, int delta_v_lower_start_ind, int delta_v_upper_start_ind, double leg_mean, double leg_sd, arma::vec alpha_mean_v, arma::mat alpha_cov_s, arma::vec delta_mean_v, arma::mat delta_cov_s, int num_iter, int start_iter, int keep_iter, int pos_ind, int neg_ind);
 RcppExport SEXP _ordpum_sample_ordinal_utility_probit(SEXP vote_vSEXP, SEXP respondent_vSEXP, SEXP question_vSEXP, SEXP all_param_drawsSEXP, SEXP y_star_mSEXP, SEXP leg_start_indSEXP, SEXP alpha_v_lower_start_indSEXP, SEXP alpha_v_upper_start_indSEXP, SEXP delta_v_lower_start_indSEXP, SEXP delta_v_upper_start_indSEXP, SEXP leg_meanSEXP, SEXP leg_sdSEXP, SEXP alpha_mean_vSEXP, SEXP alpha_cov_sSEXP, SEXP delta_mean_vSEXP, SEXP delta_cov_sSEXP, SEXP num_iterSEXP, SEXP start_iterSEXP, SEXP keep_iterSEXP, SEXP pos_indSEXP, SEXP neg_indSEXP) {
@@ -71,38 +117,6 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< int >::type pos_ind(pos_indSEXP);
     Rcpp::traits::input_parameter< int >::type neg_ind(neg_indSEXP);
     rcpp_result_gen = Rcpp::wrap(sample_ordinal_utility_probit_gen_choices(vote_v, respondent_v, question_v, question_num_choices_m1_v, all_param_draws, y_star_m, leg_start_ind, alpha_v_lower_start_ind, alpha_v_upper_start_ind, delta_v_lower_start_ind, delta_v_upper_start_ind, leg_mean, leg_sd, alpha_mean_v, alpha_cov_s, delta_mean_v, delta_cov_s, num_iter, start_iter, keep_iter, pos_ind, neg_ind));
-    return rcpp_result_gen;
-END_RCPP
-}
-// sample_ordinal_utility_probit_gen_choices_flip_alpha
-List sample_ordinal_utility_probit_gen_choices_flip_alpha(arma::uvec vote_v, arma::uvec respondent_v, arma::uvec question_v, arma::uvec question_num_choices_m1_v, arma::mat all_param_draws, arma::mat y_star_m, int leg_start_ind, int alpha_v_lower_start_ind, int alpha_v_upper_start_ind, int delta_v_lower_start_ind, int delta_v_upper_start_ind, double leg_mean, double leg_sd, arma::vec alpha_mean_v, arma::mat alpha_cov_s, arma::vec delta_mean_v, arma::mat delta_cov_s, int num_iter, int start_iter, int keep_iter, int pos_ind, int neg_ind);
-RcppExport SEXP _ordpum_sample_ordinal_utility_probit_gen_choices_flip_alpha(SEXP vote_vSEXP, SEXP respondent_vSEXP, SEXP question_vSEXP, SEXP question_num_choices_m1_vSEXP, SEXP all_param_drawsSEXP, SEXP y_star_mSEXP, SEXP leg_start_indSEXP, SEXP alpha_v_lower_start_indSEXP, SEXP alpha_v_upper_start_indSEXP, SEXP delta_v_lower_start_indSEXP, SEXP delta_v_upper_start_indSEXP, SEXP leg_meanSEXP, SEXP leg_sdSEXP, SEXP alpha_mean_vSEXP, SEXP alpha_cov_sSEXP, SEXP delta_mean_vSEXP, SEXP delta_cov_sSEXP, SEXP num_iterSEXP, SEXP start_iterSEXP, SEXP keep_iterSEXP, SEXP pos_indSEXP, SEXP neg_indSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::uvec >::type vote_v(vote_vSEXP);
-    Rcpp::traits::input_parameter< arma::uvec >::type respondent_v(respondent_vSEXP);
-    Rcpp::traits::input_parameter< arma::uvec >::type question_v(question_vSEXP);
-    Rcpp::traits::input_parameter< arma::uvec >::type question_num_choices_m1_v(question_num_choices_m1_vSEXP);
-    Rcpp::traits::input_parameter< arma::mat >::type all_param_draws(all_param_drawsSEXP);
-    Rcpp::traits::input_parameter< arma::mat >::type y_star_m(y_star_mSEXP);
-    Rcpp::traits::input_parameter< int >::type leg_start_ind(leg_start_indSEXP);
-    Rcpp::traits::input_parameter< int >::type alpha_v_lower_start_ind(alpha_v_lower_start_indSEXP);
-    Rcpp::traits::input_parameter< int >::type alpha_v_upper_start_ind(alpha_v_upper_start_indSEXP);
-    Rcpp::traits::input_parameter< int >::type delta_v_lower_start_ind(delta_v_lower_start_indSEXP);
-    Rcpp::traits::input_parameter< int >::type delta_v_upper_start_ind(delta_v_upper_start_indSEXP);
-    Rcpp::traits::input_parameter< double >::type leg_mean(leg_meanSEXP);
-    Rcpp::traits::input_parameter< double >::type leg_sd(leg_sdSEXP);
-    Rcpp::traits::input_parameter< arma::vec >::type alpha_mean_v(alpha_mean_vSEXP);
-    Rcpp::traits::input_parameter< arma::mat >::type alpha_cov_s(alpha_cov_sSEXP);
-    Rcpp::traits::input_parameter< arma::vec >::type delta_mean_v(delta_mean_vSEXP);
-    Rcpp::traits::input_parameter< arma::mat >::type delta_cov_s(delta_cov_sSEXP);
-    Rcpp::traits::input_parameter< int >::type num_iter(num_iterSEXP);
-    Rcpp::traits::input_parameter< int >::type start_iter(start_iterSEXP);
-    Rcpp::traits::input_parameter< int >::type keep_iter(keep_iterSEXP);
-    Rcpp::traits::input_parameter< int >::type pos_ind(pos_indSEXP);
-    Rcpp::traits::input_parameter< int >::type neg_ind(neg_indSEXP);
-    rcpp_result_gen = Rcpp::wrap(sample_ordinal_utility_probit_gen_choices_flip_alpha(vote_v, respondent_v, question_v, question_num_choices_m1_v, all_param_draws, y_star_m, leg_start_ind, alpha_v_lower_start_ind, alpha_v_upper_start_ind, delta_v_lower_start_ind, delta_v_upper_start_ind, leg_mean, leg_sd, alpha_mean_v, alpha_cov_s, delta_mean_v, delta_cov_s, num_iter, start_iter, keep_iter, pos_ind, neg_ind));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -168,6 +182,171 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// sample_ordinal_utility_probit_gen_choices_flip_responses
+List sample_ordinal_utility_probit_gen_choices_flip_responses(arma::uvec vote_v, arma::uvec respondent_v, arma::uvec question_v, arma::uvec question_num_choices_m1_v, arma::mat all_param_draws, arma::mat y_star_m, int leg_start_ind, int alpha_v_lower_start_ind, int alpha_v_upper_start_ind, int delta_v_lower_start_ind, int delta_v_upper_start_ind, double leg_mean, double leg_sd, arma::vec alpha_mean_v, arma::mat alpha_cov_s, arma::vec delta_mean_v, arma::mat delta_cov_s, int num_iter, int start_iter, int keep_iter, int pos_ind, int neg_ind);
+RcppExport SEXP _ordpum_sample_ordinal_utility_probit_gen_choices_flip_responses(SEXP vote_vSEXP, SEXP respondent_vSEXP, SEXP question_vSEXP, SEXP question_num_choices_m1_vSEXP, SEXP all_param_drawsSEXP, SEXP y_star_mSEXP, SEXP leg_start_indSEXP, SEXP alpha_v_lower_start_indSEXP, SEXP alpha_v_upper_start_indSEXP, SEXP delta_v_lower_start_indSEXP, SEXP delta_v_upper_start_indSEXP, SEXP leg_meanSEXP, SEXP leg_sdSEXP, SEXP alpha_mean_vSEXP, SEXP alpha_cov_sSEXP, SEXP delta_mean_vSEXP, SEXP delta_cov_sSEXP, SEXP num_iterSEXP, SEXP start_iterSEXP, SEXP keep_iterSEXP, SEXP pos_indSEXP, SEXP neg_indSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::uvec >::type vote_v(vote_vSEXP);
+    Rcpp::traits::input_parameter< arma::uvec >::type respondent_v(respondent_vSEXP);
+    Rcpp::traits::input_parameter< arma::uvec >::type question_v(question_vSEXP);
+    Rcpp::traits::input_parameter< arma::uvec >::type question_num_choices_m1_v(question_num_choices_m1_vSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type all_param_draws(all_param_drawsSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type y_star_m(y_star_mSEXP);
+    Rcpp::traits::input_parameter< int >::type leg_start_ind(leg_start_indSEXP);
+    Rcpp::traits::input_parameter< int >::type alpha_v_lower_start_ind(alpha_v_lower_start_indSEXP);
+    Rcpp::traits::input_parameter< int >::type alpha_v_upper_start_ind(alpha_v_upper_start_indSEXP);
+    Rcpp::traits::input_parameter< int >::type delta_v_lower_start_ind(delta_v_lower_start_indSEXP);
+    Rcpp::traits::input_parameter< int >::type delta_v_upper_start_ind(delta_v_upper_start_indSEXP);
+    Rcpp::traits::input_parameter< double >::type leg_mean(leg_meanSEXP);
+    Rcpp::traits::input_parameter< double >::type leg_sd(leg_sdSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type alpha_mean_v(alpha_mean_vSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type alpha_cov_s(alpha_cov_sSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type delta_mean_v(delta_mean_vSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type delta_cov_s(delta_cov_sSEXP);
+    Rcpp::traits::input_parameter< int >::type num_iter(num_iterSEXP);
+    Rcpp::traits::input_parameter< int >::type start_iter(start_iterSEXP);
+    Rcpp::traits::input_parameter< int >::type keep_iter(keep_iterSEXP);
+    Rcpp::traits::input_parameter< int >::type pos_ind(pos_indSEXP);
+    Rcpp::traits::input_parameter< int >::type neg_ind(neg_indSEXP);
+    rcpp_result_gen = Rcpp::wrap(sample_ordinal_utility_probit_gen_choices_flip_responses(vote_v, respondent_v, question_v, question_num_choices_m1_v, all_param_draws, y_star_m, leg_start_ind, alpha_v_lower_start_ind, alpha_v_upper_start_ind, delta_v_lower_start_ind, delta_v_upper_start_ind, leg_mean, leg_sd, alpha_mean_v, alpha_cov_s, delta_mean_v, delta_cov_s, num_iter, start_iter, keep_iter, pos_ind, neg_ind));
+    return rcpp_result_gen;
+END_RCPP
+}
+// sample_ordinal_utility_probit_gen_choices_flip_responses_prior
+List sample_ordinal_utility_probit_gen_choices_flip_responses_prior(arma::uvec vote_v, arma::uvec respondent_v, arma::uvec question_v, arma::uvec question_num_choices_m1_v, arma::mat all_param_draws, arma::mat y_star_m, int leg_start_ind, int alpha_v_lower_start_ind, int alpha_v_upper_start_ind, int delta_v_lower_start_ind, int delta_v_upper_start_ind, double leg_mean, double leg_sd, arma::vec alpha_mean_v, arma::mat alpha_cov_s, arma::vec delta_mean_v, arma::mat delta_cov_s, int num_iter, int start_iter, int keep_iter, int pos_ind, int neg_ind);
+RcppExport SEXP _ordpum_sample_ordinal_utility_probit_gen_choices_flip_responses_prior(SEXP vote_vSEXP, SEXP respondent_vSEXP, SEXP question_vSEXP, SEXP question_num_choices_m1_vSEXP, SEXP all_param_drawsSEXP, SEXP y_star_mSEXP, SEXP leg_start_indSEXP, SEXP alpha_v_lower_start_indSEXP, SEXP alpha_v_upper_start_indSEXP, SEXP delta_v_lower_start_indSEXP, SEXP delta_v_upper_start_indSEXP, SEXP leg_meanSEXP, SEXP leg_sdSEXP, SEXP alpha_mean_vSEXP, SEXP alpha_cov_sSEXP, SEXP delta_mean_vSEXP, SEXP delta_cov_sSEXP, SEXP num_iterSEXP, SEXP start_iterSEXP, SEXP keep_iterSEXP, SEXP pos_indSEXP, SEXP neg_indSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::uvec >::type vote_v(vote_vSEXP);
+    Rcpp::traits::input_parameter< arma::uvec >::type respondent_v(respondent_vSEXP);
+    Rcpp::traits::input_parameter< arma::uvec >::type question_v(question_vSEXP);
+    Rcpp::traits::input_parameter< arma::uvec >::type question_num_choices_m1_v(question_num_choices_m1_vSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type all_param_draws(all_param_drawsSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type y_star_m(y_star_mSEXP);
+    Rcpp::traits::input_parameter< int >::type leg_start_ind(leg_start_indSEXP);
+    Rcpp::traits::input_parameter< int >::type alpha_v_lower_start_ind(alpha_v_lower_start_indSEXP);
+    Rcpp::traits::input_parameter< int >::type alpha_v_upper_start_ind(alpha_v_upper_start_indSEXP);
+    Rcpp::traits::input_parameter< int >::type delta_v_lower_start_ind(delta_v_lower_start_indSEXP);
+    Rcpp::traits::input_parameter< int >::type delta_v_upper_start_ind(delta_v_upper_start_indSEXP);
+    Rcpp::traits::input_parameter< double >::type leg_mean(leg_meanSEXP);
+    Rcpp::traits::input_parameter< double >::type leg_sd(leg_sdSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type alpha_mean_v(alpha_mean_vSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type alpha_cov_s(alpha_cov_sSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type delta_mean_v(delta_mean_vSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type delta_cov_s(delta_cov_sSEXP);
+    Rcpp::traits::input_parameter< int >::type num_iter(num_iterSEXP);
+    Rcpp::traits::input_parameter< int >::type start_iter(start_iterSEXP);
+    Rcpp::traits::input_parameter< int >::type keep_iter(keep_iterSEXP);
+    Rcpp::traits::input_parameter< int >::type pos_ind(pos_indSEXP);
+    Rcpp::traits::input_parameter< int >::type neg_ind(neg_indSEXP);
+    rcpp_result_gen = Rcpp::wrap(sample_ordinal_utility_probit_gen_choices_flip_responses_prior(vote_v, respondent_v, question_v, question_num_choices_m1_v, all_param_draws, y_star_m, leg_start_ind, alpha_v_lower_start_ind, alpha_v_upper_start_ind, delta_v_lower_start_ind, delta_v_upper_start_ind, leg_mean, leg_sd, alpha_mean_v, alpha_cov_s, delta_mean_v, delta_cov_s, num_iter, start_iter, keep_iter, pos_ind, neg_ind));
+    return rcpp_result_gen;
+END_RCPP
+}
+// sample_ordinal_utility_probit_gen_choices_flip_beta
+List sample_ordinal_utility_probit_gen_choices_flip_beta(arma::uvec vote_v, arma::uvec respondent_v, arma::uvec question_v, arma::uvec question_num_choices_m1_v, arma::mat all_param_draws, arma::mat y_star_m, int leg_start_ind, int alpha_v_lower_start_ind, int alpha_v_upper_start_ind, int delta_v_lower_start_ind, int delta_v_upper_start_ind, double leg_mean, double leg_sd, arma::vec alpha_mean_v, arma::mat alpha_cov_s, arma::vec delta_mean_v, arma::mat delta_cov_s, int num_iter, int start_iter, int keep_iter, int pos_ind, int neg_ind, arma::uvec flip_beta_v, double flip_beta_sd);
+RcppExport SEXP _ordpum_sample_ordinal_utility_probit_gen_choices_flip_beta(SEXP vote_vSEXP, SEXP respondent_vSEXP, SEXP question_vSEXP, SEXP question_num_choices_m1_vSEXP, SEXP all_param_drawsSEXP, SEXP y_star_mSEXP, SEXP leg_start_indSEXP, SEXP alpha_v_lower_start_indSEXP, SEXP alpha_v_upper_start_indSEXP, SEXP delta_v_lower_start_indSEXP, SEXP delta_v_upper_start_indSEXP, SEXP leg_meanSEXP, SEXP leg_sdSEXP, SEXP alpha_mean_vSEXP, SEXP alpha_cov_sSEXP, SEXP delta_mean_vSEXP, SEXP delta_cov_sSEXP, SEXP num_iterSEXP, SEXP start_iterSEXP, SEXP keep_iterSEXP, SEXP pos_indSEXP, SEXP neg_indSEXP, SEXP flip_beta_vSEXP, SEXP flip_beta_sdSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::uvec >::type vote_v(vote_vSEXP);
+    Rcpp::traits::input_parameter< arma::uvec >::type respondent_v(respondent_vSEXP);
+    Rcpp::traits::input_parameter< arma::uvec >::type question_v(question_vSEXP);
+    Rcpp::traits::input_parameter< arma::uvec >::type question_num_choices_m1_v(question_num_choices_m1_vSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type all_param_draws(all_param_drawsSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type y_star_m(y_star_mSEXP);
+    Rcpp::traits::input_parameter< int >::type leg_start_ind(leg_start_indSEXP);
+    Rcpp::traits::input_parameter< int >::type alpha_v_lower_start_ind(alpha_v_lower_start_indSEXP);
+    Rcpp::traits::input_parameter< int >::type alpha_v_upper_start_ind(alpha_v_upper_start_indSEXP);
+    Rcpp::traits::input_parameter< int >::type delta_v_lower_start_ind(delta_v_lower_start_indSEXP);
+    Rcpp::traits::input_parameter< int >::type delta_v_upper_start_ind(delta_v_upper_start_indSEXP);
+    Rcpp::traits::input_parameter< double >::type leg_mean(leg_meanSEXP);
+    Rcpp::traits::input_parameter< double >::type leg_sd(leg_sdSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type alpha_mean_v(alpha_mean_vSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type alpha_cov_s(alpha_cov_sSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type delta_mean_v(delta_mean_vSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type delta_cov_s(delta_cov_sSEXP);
+    Rcpp::traits::input_parameter< int >::type num_iter(num_iterSEXP);
+    Rcpp::traits::input_parameter< int >::type start_iter(start_iterSEXP);
+    Rcpp::traits::input_parameter< int >::type keep_iter(keep_iterSEXP);
+    Rcpp::traits::input_parameter< int >::type pos_ind(pos_indSEXP);
+    Rcpp::traits::input_parameter< int >::type neg_ind(neg_indSEXP);
+    Rcpp::traits::input_parameter< arma::uvec >::type flip_beta_v(flip_beta_vSEXP);
+    Rcpp::traits::input_parameter< double >::type flip_beta_sd(flip_beta_sdSEXP);
+    rcpp_result_gen = Rcpp::wrap(sample_ordinal_utility_probit_gen_choices_flip_beta(vote_v, respondent_v, question_v, question_num_choices_m1_v, all_param_draws, y_star_m, leg_start_ind, alpha_v_lower_start_ind, alpha_v_upper_start_ind, delta_v_lower_start_ind, delta_v_upper_start_ind, leg_mean, leg_sd, alpha_mean_v, alpha_cov_s, delta_mean_v, delta_cov_s, num_iter, start_iter, keep_iter, pos_ind, neg_ind, flip_beta_v, flip_beta_sd));
+    return rcpp_result_gen;
+END_RCPP
+}
+// sample_ordinal_utility_probit_gen_choices_flip_beta_parallel
+List sample_ordinal_utility_probit_gen_choices_flip_beta_parallel(arma::uvec vote_v, arma::uvec respondent_v, arma::uvec question_v, arma::uvec question_num_choices_m1_v, arma::mat all_param_draws, arma::mat y_star_m, int leg_start_ind, int alpha_v_lower_start_ind, int alpha_v_upper_start_ind, int delta_v_lower_start_ind, int delta_v_upper_start_ind, double leg_mean, double leg_sd, arma::vec alpha_mean_v, arma::mat alpha_cov_s, arma::vec delta_mean_v, arma::mat delta_cov_s, int num_iter, int start_iter, int keep_iter, int pos_ind, int neg_ind, arma::uvec flip_beta_v, double flip_beta_sd, int num_cores);
+RcppExport SEXP _ordpum_sample_ordinal_utility_probit_gen_choices_flip_beta_parallel(SEXP vote_vSEXP, SEXP respondent_vSEXP, SEXP question_vSEXP, SEXP question_num_choices_m1_vSEXP, SEXP all_param_drawsSEXP, SEXP y_star_mSEXP, SEXP leg_start_indSEXP, SEXP alpha_v_lower_start_indSEXP, SEXP alpha_v_upper_start_indSEXP, SEXP delta_v_lower_start_indSEXP, SEXP delta_v_upper_start_indSEXP, SEXP leg_meanSEXP, SEXP leg_sdSEXP, SEXP alpha_mean_vSEXP, SEXP alpha_cov_sSEXP, SEXP delta_mean_vSEXP, SEXP delta_cov_sSEXP, SEXP num_iterSEXP, SEXP start_iterSEXP, SEXP keep_iterSEXP, SEXP pos_indSEXP, SEXP neg_indSEXP, SEXP flip_beta_vSEXP, SEXP flip_beta_sdSEXP, SEXP num_coresSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::uvec >::type vote_v(vote_vSEXP);
+    Rcpp::traits::input_parameter< arma::uvec >::type respondent_v(respondent_vSEXP);
+    Rcpp::traits::input_parameter< arma::uvec >::type question_v(question_vSEXP);
+    Rcpp::traits::input_parameter< arma::uvec >::type question_num_choices_m1_v(question_num_choices_m1_vSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type all_param_draws(all_param_drawsSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type y_star_m(y_star_mSEXP);
+    Rcpp::traits::input_parameter< int >::type leg_start_ind(leg_start_indSEXP);
+    Rcpp::traits::input_parameter< int >::type alpha_v_lower_start_ind(alpha_v_lower_start_indSEXP);
+    Rcpp::traits::input_parameter< int >::type alpha_v_upper_start_ind(alpha_v_upper_start_indSEXP);
+    Rcpp::traits::input_parameter< int >::type delta_v_lower_start_ind(delta_v_lower_start_indSEXP);
+    Rcpp::traits::input_parameter< int >::type delta_v_upper_start_ind(delta_v_upper_start_indSEXP);
+    Rcpp::traits::input_parameter< double >::type leg_mean(leg_meanSEXP);
+    Rcpp::traits::input_parameter< double >::type leg_sd(leg_sdSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type alpha_mean_v(alpha_mean_vSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type alpha_cov_s(alpha_cov_sSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type delta_mean_v(delta_mean_vSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type delta_cov_s(delta_cov_sSEXP);
+    Rcpp::traits::input_parameter< int >::type num_iter(num_iterSEXP);
+    Rcpp::traits::input_parameter< int >::type start_iter(start_iterSEXP);
+    Rcpp::traits::input_parameter< int >::type keep_iter(keep_iterSEXP);
+    Rcpp::traits::input_parameter< int >::type pos_ind(pos_indSEXP);
+    Rcpp::traits::input_parameter< int >::type neg_ind(neg_indSEXP);
+    Rcpp::traits::input_parameter< arma::uvec >::type flip_beta_v(flip_beta_vSEXP);
+    Rcpp::traits::input_parameter< double >::type flip_beta_sd(flip_beta_sdSEXP);
+    Rcpp::traits::input_parameter< int >::type num_cores(num_coresSEXP);
+    rcpp_result_gen = Rcpp::wrap(sample_ordinal_utility_probit_gen_choices_flip_beta_parallel(vote_v, respondent_v, question_v, question_num_choices_m1_v, all_param_draws, y_star_m, leg_start_ind, alpha_v_lower_start_ind, alpha_v_upper_start_ind, delta_v_lower_start_ind, delta_v_upper_start_ind, leg_mean, leg_sd, alpha_mean_v, alpha_cov_s, delta_mean_v, delta_cov_s, num_iter, start_iter, keep_iter, pos_ind, neg_ind, flip_beta_v, flip_beta_sd, num_cores));
+    return rcpp_result_gen;
+END_RCPP
+}
+// sample_ordinal_utility_probit_gen_choices_flip_alpha
+List sample_ordinal_utility_probit_gen_choices_flip_alpha(arma::uvec vote_v, arma::uvec respondent_v, arma::uvec question_v, arma::uvec question_num_choices_m1_v, arma::mat all_param_draws, arma::mat y_star_m, int leg_start_ind, int alpha_v_lower_start_ind, int alpha_v_upper_start_ind, int delta_v_lower_start_ind, int delta_v_upper_start_ind, double leg_mean, double leg_sd, arma::vec alpha_mean_v, arma::mat alpha_cov_s, arma::vec delta_mean_v, arma::mat delta_cov_s, int num_iter, int start_iter, int keep_iter, int pos_ind, int neg_ind);
+RcppExport SEXP _ordpum_sample_ordinal_utility_probit_gen_choices_flip_alpha(SEXP vote_vSEXP, SEXP respondent_vSEXP, SEXP question_vSEXP, SEXP question_num_choices_m1_vSEXP, SEXP all_param_drawsSEXP, SEXP y_star_mSEXP, SEXP leg_start_indSEXP, SEXP alpha_v_lower_start_indSEXP, SEXP alpha_v_upper_start_indSEXP, SEXP delta_v_lower_start_indSEXP, SEXP delta_v_upper_start_indSEXP, SEXP leg_meanSEXP, SEXP leg_sdSEXP, SEXP alpha_mean_vSEXP, SEXP alpha_cov_sSEXP, SEXP delta_mean_vSEXP, SEXP delta_cov_sSEXP, SEXP num_iterSEXP, SEXP start_iterSEXP, SEXP keep_iterSEXP, SEXP pos_indSEXP, SEXP neg_indSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::uvec >::type vote_v(vote_vSEXP);
+    Rcpp::traits::input_parameter< arma::uvec >::type respondent_v(respondent_vSEXP);
+    Rcpp::traits::input_parameter< arma::uvec >::type question_v(question_vSEXP);
+    Rcpp::traits::input_parameter< arma::uvec >::type question_num_choices_m1_v(question_num_choices_m1_vSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type all_param_draws(all_param_drawsSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type y_star_m(y_star_mSEXP);
+    Rcpp::traits::input_parameter< int >::type leg_start_ind(leg_start_indSEXP);
+    Rcpp::traits::input_parameter< int >::type alpha_v_lower_start_ind(alpha_v_lower_start_indSEXP);
+    Rcpp::traits::input_parameter< int >::type alpha_v_upper_start_ind(alpha_v_upper_start_indSEXP);
+    Rcpp::traits::input_parameter< int >::type delta_v_lower_start_ind(delta_v_lower_start_indSEXP);
+    Rcpp::traits::input_parameter< int >::type delta_v_upper_start_ind(delta_v_upper_start_indSEXP);
+    Rcpp::traits::input_parameter< double >::type leg_mean(leg_meanSEXP);
+    Rcpp::traits::input_parameter< double >::type leg_sd(leg_sdSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type alpha_mean_v(alpha_mean_vSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type alpha_cov_s(alpha_cov_sSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type delta_mean_v(delta_mean_vSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type delta_cov_s(delta_cov_sSEXP);
+    Rcpp::traits::input_parameter< int >::type num_iter(num_iterSEXP);
+    Rcpp::traits::input_parameter< int >::type start_iter(start_iterSEXP);
+    Rcpp::traits::input_parameter< int >::type keep_iter(keep_iterSEXP);
+    Rcpp::traits::input_parameter< int >::type pos_ind(pos_indSEXP);
+    Rcpp::traits::input_parameter< int >::type neg_ind(neg_indSEXP);
+    rcpp_result_gen = Rcpp::wrap(sample_ordinal_utility_probit_gen_choices_flip_alpha(vote_v, respondent_v, question_v, question_num_choices_m1_v, all_param_draws, y_star_m, leg_start_ind, alpha_v_lower_start_ind, alpha_v_upper_start_ind, delta_v_lower_start_ind, delta_v_upper_start_ind, leg_mean, leg_sd, alpha_mean_v, alpha_cov_s, delta_mean_v, delta_cov_s, num_iter, start_iter, keep_iter, pos_ind, neg_ind));
+    return rcpp_result_gen;
+END_RCPP
+}
 // calc_waic_ordinal_pum_utility
 arma::mat calc_waic_ordinal_pum_utility(arma::vec leg_ideology, arma::vec alpha_m_lower, arma::vec alpha_m_upper, arma::vec delta_m_lower, arma::vec delta_m_upper, arma::mat case_vote_m, unsigned int km1);
 RcppExport SEXP _ordpum_calc_waic_ordinal_pum_utility(SEXP leg_ideologySEXP, SEXP alpha_m_lowerSEXP, SEXP alpha_m_upperSEXP, SEXP delta_m_lowerSEXP, SEXP delta_m_upperSEXP, SEXP case_vote_mSEXP, SEXP km1SEXP) {
@@ -223,11 +402,18 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_ordpum_sample_alpha_ordinal_independent_lower", (DL_FUNC) &_ordpum_sample_alpha_ordinal_independent_lower, 3},
+    {"_ordpum_calc_choice_k_prob", (DL_FUNC) &_ordpum_calc_choice_k_prob, 3},
+    {"_ordpum_calc_log_ll_y_star", (DL_FUNC) &_ordpum_calc_log_ll_y_star, 10},
     {"_ordpum_sample_ordinal_utility_probit", (DL_FUNC) &_ordpum_sample_ordinal_utility_probit, 21},
     {"_ordpum_sample_ordinal_utility_probit_gen_choices", (DL_FUNC) &_ordpum_sample_ordinal_utility_probit_gen_choices, 22},
-    {"_ordpum_sample_ordinal_utility_probit_gen_choices_flip_alpha", (DL_FUNC) &_ordpum_sample_ordinal_utility_probit_gen_choices_flip_alpha, 22},
     {"_ordpum_sample_ordinal_utility_probit_flip", (DL_FUNC) &_ordpum_sample_ordinal_utility_probit_flip, 21},
     {"_ordpum_sample_ordinal_utility_probit_flip_prior", (DL_FUNC) &_ordpum_sample_ordinal_utility_probit_flip_prior, 21},
+    {"_ordpum_sample_ordinal_utility_probit_gen_choices_flip_responses", (DL_FUNC) &_ordpum_sample_ordinal_utility_probit_gen_choices_flip_responses, 22},
+    {"_ordpum_sample_ordinal_utility_probit_gen_choices_flip_responses_prior", (DL_FUNC) &_ordpum_sample_ordinal_utility_probit_gen_choices_flip_responses_prior, 22},
+    {"_ordpum_sample_ordinal_utility_probit_gen_choices_flip_beta", (DL_FUNC) &_ordpum_sample_ordinal_utility_probit_gen_choices_flip_beta, 24},
+    {"_ordpum_sample_ordinal_utility_probit_gen_choices_flip_beta_parallel", (DL_FUNC) &_ordpum_sample_ordinal_utility_probit_gen_choices_flip_beta_parallel, 25},
+    {"_ordpum_sample_ordinal_utility_probit_gen_choices_flip_alpha", (DL_FUNC) &_ordpum_sample_ordinal_utility_probit_gen_choices_flip_alpha, 22},
     {"_ordpum_calc_waic_ordinal_pum_utility", (DL_FUNC) &_ordpum_calc_waic_ordinal_pum_utility, 7},
     {"_ordpum_calc_waic_ordinal_pum_waic", (DL_FUNC) &_ordpum_calc_waic_ordinal_pum_waic, 8},
     {"_ordpum_calc_waic_ordinal_pum_block", (DL_FUNC) &_ordpum_calc_waic_ordinal_pum_block, 8},

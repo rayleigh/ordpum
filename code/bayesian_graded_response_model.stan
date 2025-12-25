@@ -7,6 +7,8 @@ data {
   array[total_responses] int response_v;
   array[total_responses] int response_ind_v;
   array[total_responses] int response_q_v;
+  real<lower=0> alpha_sd;
+  vector[K - 1] delta_mu;
 }
 
 // The parameters accepted by the model. Our model
@@ -22,9 +24,13 @@ parameters {
 // and standard deviation 'sigma'.
 model {
   beta ~ normal(0, 1);
-  alpha ~ normal(0, 3);
+  //alpha ~ normal(0, 3);
+  alpha ~ normal(0, alpha_sd);
   for (j in 1:num_responses) {
-    delta[j] ~ normal(0, 3);
+    //delta[j] ~ normal(0, 3);
+    for (k in 1:(K - 1)) {
+      delta[j][k] ~ normal(delta_mu[k], 3);
+    }
   }
   for (i in 1:total_responses) {
     real cat_prob_raw;

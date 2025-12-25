@@ -830,7 +830,8 @@ sample_ordinal_utility_probit_gen_choices_flip_beta_R_rcpp <- function(
   num_iter = 2000, start_iter = 0, keep_iter = 1,
   leg_pos_init = NULL, alpha_pos_init = NULL, delta_pos_init = NULL,
   y_star_m = NULL, pos_ind = 0, neg_ind = 0, start_val = NULL,
-  flip_beta_v = 1:nrow(vote_m), flip_beta_sd = 1, num_cores = 2) {
+  flip_beta_v = 1:nrow(vote_m), flip_beta_sd = 1, num_cores = 2,
+  flip_response_v = NULL) {
 
   total_iter = (num_iter - start_iter) %/% keep_iter
   init_info <- init_data_rcpp_gen_choices(
@@ -839,6 +840,17 @@ sample_ordinal_utility_probit_gen_choices_flip_beta_R_rcpp <- function(
 
   if (!is.null(start_val)) {
     init_info[[2]][1,] <- start_val
+  }
+
+  if (!is.null(start_val)) {
+    flipped_order_question <- which(flip_response_v == 1)
+    if (length(flipped_order_question) > 0) {
+      for (i in flipped_order_question) {
+        interested_inds <- which((init_info[[1]][,2] + 1)  == i)
+        flip_vote_v[interested_inds] <-
+          (num_choices_m[1,] - 1) - flip_vote_v[interested_inds]
+      }
+    }
   }
 
   all_param_draw <- init_info[[2]]
@@ -850,6 +862,7 @@ sample_ordinal_utility_probit_gen_choices_flip_beta_R_rcpp <- function(
   y_star_m_log_ll_m <- rep(0, ncol = total_iter)
   accept_count <- rep(0, nrow(vote_m))
   accept_count_response <- rep(0, ncol(vote_m))
+  response_flip_tracker_m <- matrix(0, ncol(vote_m), nrow = num_iter %/% 50)
   log_ll <- matrix(0, ncol = length(init_info[[1]][,3]),
                    nrow = num_iter %/% 50)
   while(iter_run_num < num_iter) {
@@ -906,6 +919,8 @@ sample_ordinal_utility_probit_gen_choices_flip_beta_R_rcpp <- function(
       log_ll[iter_run_num %/% 50 + 1,] <- flip_info[[length(flip_info) - 1]]
       accept_count_response = accept_count_response +
         flip_info[[length(flip_info)]]
+      response_flip_tracker_m[iter_run_num %/% 50 + 1,] <-
+        accept_count_response %% 2 
 
       interested_inds <- which(init_info[[1]][,1] %in% (flip_beta_v - 1))
       last_draw <- draw_info[[1]][nrow(draw_info[[1]]),]
@@ -988,5 +1003,6 @@ sample_ordinal_utility_probit_gen_choices_flip_beta_R_rcpp <- function(
                 "y_star_m_log_ll" = y_star_m_log_ll_m,
                 "accept_count_v" = accept_count,
 		"accept_count_response_v" = accept_count_response,
+		"accept_response_m_flip" = response_flip_tracker_m,
                 "log_ll" = log_ll)))
 }
